@@ -26,7 +26,7 @@ export default {
     },
   },
   mutations: {
-    updateArticles(state: State, articles: Array<Article>) {
+    updateArticles(state: State, articles: State["articles"]) {
       state.articles = articles;
     },
     createArticle(state: State, article: Article) {
@@ -37,7 +37,7 @@ export default {
     articles: [],
   },
   getters: {
-    articles(state: State) {
+    articles(state: State): State["articles"] {
       return state.articles;
     },
   },

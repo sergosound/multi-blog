@@ -1,13 +1,14 @@
-export type State = { name: string };
+export type State = { id: number; name: string };
 
 export default {
   actions: {},
   mutations: {
-    changeName(state: any) {
+    changeName(state: State) {
       state.name = "Kolya";
     },
   },
   state: {
+    id: 1,
     name: "Anton",
   },
   getters: {
