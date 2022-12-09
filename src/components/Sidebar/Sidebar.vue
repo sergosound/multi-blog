@@ -2,14 +2,14 @@
   <section id="sidebar">
     <!-- Intro -->
     <section id="intro">
-      <a href="#" class="logo"
+      <router-link to="/" class="logo"
         ><img src="../../assets/images/logo.jpg" alt=""
-      /></a>
+      /></router-link>
       <header>
         <h2>Future Imperfect</h2>
         <p>
           Another fine responsive site template by
-          <a href="http://html5up.net">HTML5 UP</a>
+          <router-link to="/">HTML5 UP</router-link>
         </p>
       </header>
     </section>
@@ -20,65 +20,65 @@
         <!-- Mini Post -->
         <article class="mini-post">
           <header>
-            <h3><a href="#">Vitae sed condimentum</a></h3>
+            <h3><router-link to="/">Vitae sed condimentum</router-link></h3>
             <time class="published" datetime="2015-10-20"
               >October 20, 2015</time
             >
-            <a href="#" class="author"
+            <router-link to="/" class="author"
               ><img src="../../assets/images/avatar.jpg" alt=""
-            /></a>
+            /></router-link>
           </header>
-          <a href="#" class="image"
+          <router-link to="/" class="image"
             ><img src="../../assets/images/pic04.jpg" alt=""
-          /></a>
+          /></router-link>
         </article>
 
         <!-- Mini Post -->
         <article class="mini-post">
           <header>
-            <h3><a href="#">Rutrum neque accumsan</a></h3>
+            <h3><router-link to="/">Rutrum neque accumsan</router-link></h3>
             <time class="published" datetime="2015-10-19"
               >October 19, 2015</time
             >
-            <a href="#" class="author"
+            <router-link to="/" class="author"
               ><img src="../../assets/images/avatar.jpg" alt=""
-            /></a>
+            /></router-link>
           </header>
-          <a href="#" class="image"
+          <router-link to="/" class="image"
             ><img src="../../assets/images/pic05.jpg" alt=""
-          /></a>
+          /></router-link>
         </article>
 
         <!-- Mini Post -->
         <article class="mini-post">
           <header>
-            <h3><a href="#">Odio congue mattis</a></h3>
+            <h3><router-link to="/">Odio congue mattis</router-link></h3>
             <time class="published" datetime="2015-10-18"
               >October 18, 2015</time
             >
-            <a href="#" class="author"
+            <router-link to="/" class="author"
               ><img src="../../assets/images/avatar.jpg" alt=""
-            /></a>
+            /></router-link>
           </header>
-          <a href="#" class="image"
+          <router-link to="/" class="image"
             ><img src="../../assets/images/pic06.jpg" alt=""
-          /></a>
+          /></router-link>
         </article>
 
         <!-- Mini Post -->
         <article class="mini-post">
           <header>
-            <h3><a href="#">Enim nisl veroeros</a></h3>
+            <h3><router-link to="/">Enim nisl veroeros</router-link></h3>
             <time class="published" datetime="2015-10-17"
               >October 17, 2015</time
             >
-            <a href="#" class="author"
+            <router-link to="/" class="author"
               ><img src="../../assets/images/avatar.jpg" alt=""
-            /></a>
+            /></router-link>
           </header>
-          <a href="#" class="image"
+          <router-link to="/" class="image"
             ><img src="../../assets/images/pic07.jpg" alt=""
-          /></a>
+          /></router-link>
         </article>
       </div>
     </section>
@@ -89,72 +89,86 @@
         <li>
           <article>
             <header>
-              <h3><a href="#">Lorem ipsum fermentum ut nisl vitae</a></h3>
+              <h3>
+                <router-link to="/"
+                  >Lorem ipsum fermentum ut nisl vitae</router-link
+                >
+              </h3>
               <time class="published" datetime="2015-10-20"
                 >October 20, 2015</time
               >
             </header>
-            <a href="#" class="image"
+            <router-link to="/" class="image"
               ><img src="../../assets/images/pic08.jpg" alt=""
-            /></a>
+            /></router-link>
           </article>
         </li>
         <li>
           <article>
             <header>
               <h3>
-                <a href="#">Convallis maximus nisl mattis nunc id lorem</a>
+                <router-link to="/"
+                  >Convallis maximus nisl mattis nunc id lorem</router-link
+                >
               </h3>
               <time class="published" datetime="2015-10-15"
                 >October 15, 2015</time
               >
             </header>
-            <a href="#" class="image"
+            <router-link to="/" class="image"
               ><img src="../../assets/images/pic09.jpg" alt=""
-            /></a>
+            /></router-link>
           </article>
         </li>
         <li>
           <article>
             <header>
               <h3>
-                <a href="#">Euismod amet placerat vivamus porttitor</a>
+                <router-link to="/"
+                  >Euismod amet placerat vivamus porttitor</router-link
+                >
               </h3>
               <time class="published" datetime="2015-10-10"
                 >October 10, 2015</time
               >
             </header>
-            <a href="#" class="image"
+            <router-link to="/" class="image"
               ><img src="../../assets/images/pic10.jpg" alt=""
-            /></a>
+            /></router-link>
           </article>
         </li>
         <li>
           <article>
             <header>
               <h3>
-                <a href="#">Magna enim accumsan tortor cursus ultricies</a>
+                <router-link to="/"
+                  >Magna enim accumsan tortor cursus ultricies</router-link
+                >
               </h3>
               <time class="published" datetime="2015-10-08"
                 >October 8, 2015</time
               >
             </header>
-            <a href="#" class="image"
+            <router-link to="/" class="image"
               ><img src="../../assets/images/pic11.jpg" alt=""
-            /></a>
+            /></router-link>
           </article>
         </li>
         <li>
           <article>
             <header>
-              <h3><a href="#">Congue ullam corper lorem ipsum dolor</a></h3>
+              <h3>
+                <router-link to="/"
+                  >Congue ullam corper lorem ipsum dolor</router-link
+                >
+              </h3>
               <time class="published" datetime="2015-10-06"
                 >October 7, 2015</time
               >
             </header>
-            <a href="#" class="image"
+            <router-link to="/" class="image"
               ><img src="../../assets/images/pic12.jpg" alt=""
-            /></a>
+            /></router-link>
           </article>
         </li>
       </ul>
@@ -169,7 +183,7 @@
         enim, ac accumsan tortor cursus at phasellus sed ultricies.
       </p>
       <ul class="actions">
-        <li><a href="#" class="button">Learn More</a></li>
+        <li><router-link to="/" class="button">Learn More</router-link></li>
       </ul>
     </section>
 
@@ -177,28 +191,35 @@
     <section id="footer">
       <ul class="icons">
         <li>
-          <a href="#" class="fa-twitter"><span class="label">Twitter</span></a>
-        </li>
-        <li>
-          <a href="#" class="fa-facebook"
-            ><span class="label">Facebook</span></a
+          <router-link to="/" class="fa-twitter"
+            ><span class="label">Twitter</span></router-link
           >
         </li>
         <li>
-          <a href="#" class="fa-instagram"
-            ><span class="label">Instagram</span></a
+          <router-link to="/" class="fa-facebook"
+            ><span class="label">Facebook</span></router-link
           >
         </li>
         <li>
-          <a href="#" class="fa-rss"><span class="label">RSS</span></a>
+          <router-link to="/" class="fa-instagram"
+            ><span class="label">Instagram</span></router-link
+          >
         </li>
         <li>
-          <a href="#" class="fa-envelope"><span class="label">Email</span></a>
+          <router-link to="/" class="fa-rss"
+            ><span class="label">RSS</span></router-link
+          >
+        </li>
+        <li>
+          <router-link to="/" class="fa-envelope"
+            ><span class="label">Email</span></router-link
+          >
         </li>
       </ul>
       <p class="copyright">
-        &copy; Untitled. Design: <a href="http://html5up.net">HTML5 UP</a>.
-        Images: <a href="http://unsplash.com">Unsplash</a>.
+        &copy; Untitled. Design:
+        <router-link to="http://html5up.net">HTML5 UP</router-link>. Images:
+        <router-link to="http://unsplash.com">Unsplash</router-link>.
       </p>
     </section>
   </section>

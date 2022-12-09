@@ -118,6 +118,6 @@
 /* Main */
 
 	#main {
-		display: table-cell;
+		display: block;
 		vertical-align: top;
 	}

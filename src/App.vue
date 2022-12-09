@@ -6,10 +6,14 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Blog from "./components/Blog.vue";
 
 export default Vue.extend({
   name: "App",
+  mounted() {
+    this.$nextTick(function () {
+      // all children are rendered
+    });
+  },
 });
 </script>
 

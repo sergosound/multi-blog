@@ -11,7 +11,8 @@
     "core-js": "^3.8.3",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2",
+    "vuex-persist": "^3.1.3"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.4.0",
@@ -28,5 +29,10 @@
     "prettier": "^2.4.1",
     "typescript": "~4.5.5",
     "vue-template-compiler": "^2.6.14"
+  },
+  "app": {
+    "config": {
+      "unwrapInjectedRef": true
+    }
   }
 }

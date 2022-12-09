@@ -1,7 +1,7 @@
 <template>
   <header id="header">
     <h1>
-      <a href="/home">Multi Blog {{ userName }}</a>
+      <router-link to="/">Multi Blog {{ userName }}</router-link>
     </h1>
     <nav class="links">
       <ul>
@@ -13,7 +13,7 @@
     <nav class="main">
       <ul>
         <li class="search">
-          <router-link class="fa-search" to="=/home">Search</router-link>
+          <router-link class="fa-search" to="=/">Search</router-link>
           <form id="search" method="get" action="#">
             <input type="text" name="query" placeholder="Search" />
           </form>
@@ -27,10 +27,18 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
+
 export default {
   name: "HeaderComponent",
   computed: mapGetters(["userName"]),
+  methods: {
+    ...mapActions(["getArticles"]),
+    ...mapMutations(["createArticle"]),
+  },
+  created() {
+    this.getArticles();
+  },
 };
 </script>
 

@@ -1,17 +1,34 @@
 <template>
   <div class="home">
-    <Blog />
+    <Layout>
+      <section id="menu">
+        <Search />
+        <Links />
+        <Actions />
+      </section>
+      <Main />
+      <Sidebar />
+    </Layout>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Blog from "@/components/Blog.vue";
+import { Layout } from "@/components/Layout";
+import { Main } from "@/components/Main";
+import { Sidebar } from "@/components/Sidebar";
+import { Links } from "@/components/Links";
+import { Actions } from "@/components/Actions";
+import { Search } from "@/components/Search";
 
 export default {
   name: "HomeComponent",
   components: {
-    Blog,
+    Layout,
+    Main,
+    Sidebar,
+    Links,
+    Actions,
+    Search,
   },
 };
 </script>

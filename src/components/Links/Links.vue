@@ -2,28 +2,28 @@
   <section>
     <ul class="links">
       <li>
-        <a href="#">
+        <router-link to="/">
           <h3>Lorem ipsum</h3>
           <p>Feugiat tempus veroeros dolor</p>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="#">
+        <router-link to="/">
           <h3>Dolor sit amet</h3>
           <p>Sed vitae justo condimentum</p>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="#">
+        <router-link to="/">
           <h3>Feugiat veroeros</h3>
           <p>Phasellus sed ultricies mi congue</p>
-        </a>
+        </router-link>
       </li>
       <li>
-        <a href="#">
+        <router-link to="/">
           <h3>Etiam sed consequat</h3>
           <p>Porta lectus amet ultricies</p>
-        </a>
+        </router-link>
       </li>
     </ul>
   </section>

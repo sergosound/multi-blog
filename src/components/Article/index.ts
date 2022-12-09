@@ -1,3 +1,3 @@
-import Article from "./Article.vue";
+import Article from "./Container.vue";
 
 export { Article };
