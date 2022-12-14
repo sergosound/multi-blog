@@ -18,9 +18,8 @@ const categories = [
 export const injectCategoryForArticles = <StateArticle>(
   articles: Array<StateArticle>
 ): Array<StateArticle & { category: string }> => {
-  const randomCategoryIndex = Math.floor(Math.random() * categories.length);
   return articles.map((article) => ({
     ...article,
-    category: categories[randomCategoryIndex],
+    category: categories[Math.floor(Math.random() * categories.length)],
   }));
 };

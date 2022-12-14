@@ -1,19 +1,72 @@
-export type State = { id: number; name: string };
+import api from "@/api";
+import { ActionContext } from "vuex";
+import { RootState } from "@/store/modules";
+
+type User = {
+  id: number;
+  name: string;
+  interests: string[];
+};
+
+export type State = {
+  loading: boolean;
+  data: User | undefined;
+  isAuth: boolean;
+};
 
 export default {
-  actions: {},
+  actions: {
+    async getUser(
+      { commit }: ActionContext<State, RootState>,
+      isAuth?: boolean
+    ) {
+      commit("updateLoading", true);
+      try {
+        const user = await api.fetchUser(isAuth);
+        commit("updateUser", user);
+      } catch (err) {
+        commit("updateUser", undefined);
+      }
+    },
+    async registerUser(
+      { commit }: ActionContext<State, RootState>,
+      { email, password }: { email: string; password: string }
+    ) {
+      commit("updateLoading", true);
+      const user = await api.createUser({ email, password });
+      commit("updateUser", user);
+    },
+    logOut({ commit }: ActionContext<State, RootState>) {
+      commit("logOut");
+    },
+  },
   mutations: {
-    changeName(state: State) {
-      state.name = "Kolya";
+    updateLoading(state: State, loading: boolean) {
+      state.loading = loading;
+    },
+    updateUser(state: State, user: User) {
+      state.data = user;
+      state.isAuth = true;
+    },
+    logOut(state: State) {
+      state.data = undefined;
+      state.isAuth = false;
     },
   },
   state: {
-    id: 1,
-    name: "Anton",
+    loading: false,
+    user: undefined,
+    isAuth: false,
   },
   getters: {
-    userName(state: State) {
-      return state.name;
+    user(state: State) {
+      return state.data;
+    },
+    interests(state: State) {
+      return state.data?.interests;
+    },
+    isAuth(state: State) {
+      return state.isAuth;
     },
   },
 };

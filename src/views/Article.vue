@@ -4,20 +4,15 @@
   </Layout>
 </template>
 
-<script>
-import { computed } from "vue";
+<script lang="ts">
+import { Vue, Component, Provide } from "vue-property-decorator";
 import { Layout } from "@/components/Layout";
 import { Article } from "@/components/Article";
 
-export default {
-  name: "ArticleViewComponent",
-  components: { Article, Layout },
-  provide() {
-    return {
-      fullView: computed(() => true),
-    };
-  },
-};
+@Component({ name: "ArticleViewComponent", components: { Article, Layout } })
+export default class ArticleView extends Vue {
+  @Provide("fullView") true = true;
+}
 </script>
 
 <style></style>

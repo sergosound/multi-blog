@@ -21,9 +21,16 @@
     <footer class="flex-end">
       <ul class="actions" v-if="!fullView">
         <li>
-          <router-link :to="'/article/' + 1" class="button big"
-            >Continue Reading</router-link
-          >
+          <button-component :id="article.id">
+            <template v-slot:icon
+              ><img
+                src="../../assets/images/arrow.webp"
+                alt="arrow-right"
+                style="height: 20px; margin-right: 10px"
+            /></template>
+            Continue Reading
+            <template v-slot:id>{{ article.id }}</template>
+          </button-component>
         </li>
       </ul>
       <ul class="stats">
@@ -42,14 +49,19 @@
   <p class="not-found" v-else>Not found =(</p>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { Vue, Component, Prop, Inject } from "vue-property-decorator";
+import { Article } from "@/store/modules";
+import Button from "@/components/Article/Button.vue";
+
+@Component({
   name: "ArticleComponent",
-  props: ["article"],
-  inject: {
-    fullView: { from: "fullView", default: false },
-  },
-};
+  components: { "button-component": Button },
+})
+export default class ArticleTemplate extends Vue {
+  @Prop() readonly article: Article | undefined;
+  @Inject({ from: "fullView", default: false }) readonly fullView!: boolean;
+}
 </script>
 
 <style>

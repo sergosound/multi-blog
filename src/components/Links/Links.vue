@@ -29,8 +29,9 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: "LinksComponent",
-};
+<script lang="ts">
+import { Vue, Component } from "vue-property-decorator";
+
+@Component({ name: "LinksComponent" })
+export default class Layout extends Vue {}
 </script>

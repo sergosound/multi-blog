@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <p v-if="loading">Loading</p>
+    <p v-if="articlesLoading">Loading</p>
     <div v-else-if="articles.length">
       <Article
         v-for="(article, index) in articles"
@@ -12,14 +12,16 @@
     <p v-else>No articles =(</p>
   </div>
 </template>
-<script>
+<script lang="ts">
+import { Vue, Component } from "vue-property-decorator";
 import { mapGetters } from "vuex";
 import { Article } from "@/components/Article";
 import { Pagination } from "@/components/Pagination";
 
-export default {
+@Component({
   name: "MainComponent",
   components: { Article, Pagination },
-  computed: mapGetters(["loading", "articles"]),
-};
+  computed: mapGetters(["articlesLoading", "articles"]),
+})
+export default class Main extends Vue {}
 </script>

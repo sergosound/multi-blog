@@ -8,8 +8,9 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: "ActionsComponent",
-};
+<script lang="ts">
+import { Vue, Component } from "vue-property-decorator";
+
+@Component({ name: "ActionsComponent" })
+export default class Actions extends Vue {}
 </script>

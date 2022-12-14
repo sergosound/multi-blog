@@ -2,27 +2,29 @@
   <ArticleTemplate :article="theArticle" />
 </template>
 
-<script>
+<script lang="ts">
+import { Vue, Component, Prop } from "vue-property-decorator";
 import ArticleTemplate from "./ArticleTemplate.vue";
+import { Article } from "@/store/modules";
 
-export default {
+@Component({
   name: "ArticleContainerComponent",
-  props: ["article"],
   components: { ArticleTemplate },
-  computed: {
-    theArticle: function () {
-      if (this.article) {
-        return this.article;
-      }
+})
+export default class Container extends Vue {
+  @Prop() readonly article: Article | undefined;
+  get theArticle() {
+    if (this.article) {
+      return this.article;
+    }
+    console.log(2);
+    if (this.$store.getters.articles.length) {
+      return this.$store.getters.articles.find(
+        (article: Article) => article.id === Number(this.$route.params.id)
+      );
+    }
 
-      if (this.$store.getters.articles.length) {
-        return this.$store.getters.articles.find(
-          (article) => article.id === Number(this.$route.params.id)
-        );
-      }
-
-      return undefined;
-    },
-  },
-};
+    return undefined;
+  }
+}
 </script>

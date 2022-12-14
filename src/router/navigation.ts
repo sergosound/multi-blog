@@ -1,12 +1,18 @@
 import { Route, NavigationGuardNext } from "vue-router";
+import { store } from "@/store";
 
-const authorizedRoutes = ["/create-article"];
 const routes = [];
 
-export const guards = (to: Route, from: Route, next: NavigationGuardNext) => {
-  if (authorizedRoutes.includes(to.path))
-    next({ path: "/", params: { unauthorizedRedirect: "true" } });
-  else next();
+export const guards = async (
+  to: Route,
+  from: Route,
+  next: NavigationGuardNext
+) => {
+  if (to.meta?.requiresAuth && !store.getters.isAuth) {
+    next({ name: "/auth/login" });
+  } else {
+    next();
+  }
 };
 
 export const afterHook = (to: Route, from: Route) => {

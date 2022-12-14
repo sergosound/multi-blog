@@ -1,6 +1,12 @@
 const title = "Mock title for all articles";
 const body = "Mock body for all articles";
 
+export const mockUser = {
+  id: 1,
+  name: "Serhii",
+  interests: ["music", "programming", "psychology", "history"],
+};
+
 export const mockArticles = (function () {
   const articles = [];
   for (let i = 0; i < 10; i++) {

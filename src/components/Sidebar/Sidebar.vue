@@ -14,72 +14,13 @@
       </header>
     </section>
 
-    <!-- Mini Posts -->
     <section>
       <div class="mini-posts">
-        <!-- Mini Post -->
-        <article class="mini-post">
-          <header>
-            <h3><router-link to="/">Vitae sed condimentum</router-link></h3>
-            <time class="published" datetime="2015-10-20"
-              >October 20, 2015</time
-            >
-            <router-link to="/" class="author"
-              ><img src="../../assets/images/avatar.jpg" alt=""
-            /></router-link>
-          </header>
-          <router-link to="/" class="image"
-            ><img src="../../assets/images/pic04.jpg" alt=""
-          /></router-link>
-        </article>
-
-        <!-- Mini Post -->
-        <article class="mini-post">
-          <header>
-            <h3><router-link to="/">Rutrum neque accumsan</router-link></h3>
-            <time class="published" datetime="2015-10-19"
-              >October 19, 2015</time
-            >
-            <router-link to="/" class="author"
-              ><img src="../../assets/images/avatar.jpg" alt=""
-            /></router-link>
-          </header>
-          <router-link to="/" class="image"
-            ><img src="../../assets/images/pic05.jpg" alt=""
-          /></router-link>
-        </article>
-
-        <!-- Mini Post -->
-        <article class="mini-post">
-          <header>
-            <h3><router-link to="/">Odio congue mattis</router-link></h3>
-            <time class="published" datetime="2015-10-18"
-              >October 18, 2015</time
-            >
-            <router-link to="/" class="author"
-              ><img src="../../assets/images/avatar.jpg" alt=""
-            /></router-link>
-          </header>
-          <router-link to="/" class="image"
-            ><img src="../../assets/images/pic06.jpg" alt=""
-          /></router-link>
-        </article>
-
-        <!-- Mini Post -->
-        <article class="mini-post">
-          <header>
-            <h3><router-link to="/">Enim nisl veroeros</router-link></h3>
-            <time class="published" datetime="2015-10-17"
-              >October 17, 2015</time
-            >
-            <router-link to="/" class="author"
-              ><img src="../../assets/images/avatar.jpg" alt=""
-            /></router-link>
-          </header>
-          <router-link to="/" class="image"
-            ><img src="../../assets/images/pic07.jpg" alt=""
-          /></router-link>
-        </article>
+        <MiniPost
+          v-for="(article, index) in articlesByUserInterests"
+          :key="index"
+          :article="article"
+        />
       </div>
     </section>
 
@@ -225,8 +166,18 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: "SidebarComponent",
-};
+<script lang="ts">
+import { Vue, Component } from "vue-property-decorator";
+import MiniPost from "./MiniPost.vue";
+import { Article } from "@/store/modules";
+
+@Component({ name: "SidebarComponent", components: { MiniPost } })
+export default class Layout extends Vue {
+  get articlesByUserInterests() {
+    const { articles, interests } = this.$store.getters;
+    return articles.filter((article: Article) =>
+      ([].concat(interests) as string[]).includes(article.category)
+    );
+  }
+}
 </script>
