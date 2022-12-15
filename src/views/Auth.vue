@@ -1,56 +1,33 @@
 <template>
   <main class="form-signin w-100 m-auto">
-    <form @submit.prevent="submit">
-      <img
-        class="mb-4"
-        src="../assets/images/bootstrap-logo.svg"
-        alt=""
-        width="72"
-        height="57"
-      />
-      <h1 class="h3 mb-3 fw-normal">
-        {{ isLogin ? "Please Log in" : "Please sign in" }}
-      </h1>
-
-      <div class="form-floating">
-        <input
-          type="email"
-          class="form-control"
-          id="floatingInput"
-          placeholder="name@example.com"
-          v-model="email"
-        />
-        <label for="floatingInput">Email address</label>
-      </div>
-      <div class="form-floating">
-        <input
-          type="password"
-          class="form-control"
-          id="floatingPassword"
-          placeholder="Password"
-          v-model="password"
-        />
-        <label for="floatingPassword">Password</label>
-      </div>
-
-      <button
-        class="w-100 btn btn-lg btn-primary mt-3"
-        type="submit"
-        style="color: white !important"
-      >
-        {{ isLogin ? "Log in" : "Sign in" }}
-      </button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
-    </form>
+    <AuthForm
+      :email="email"
+      @update:email="email = $event"
+      :password="password"
+      @update:password="password = $event"
+      :isLogin="isLogin"
+      :submit="submit"
+    />
+    <strong>invalid: {{ v$.$invalid }}</strong>
+    <p v-for="(error, index) of v$.$errors" :key="index">
+      <strong>{{ error.$validator }}</strong>
+      <small> on property</small>
+      <strong>{{ error.$property }}</strong>
+      <small> says:</small>
+      <strong>{{ error.$message }}</strong>
+    </p>
   </main>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-// import { email, required, minLength } from "vuelidate/lib/validators";
+import { useVuelidate } from "@vuelidate/core";
+import { required, email, minLength } from "@vuelidate/validators";
+import { AuthForm } from "@/components/AuthFrom";
 
-@Component({
+@Component<any>({
   name: "AuthViewComponent",
+  components: { AuthForm },
   data() {
     return {
       email: "email@gmail.com",
@@ -58,17 +35,24 @@ import { Vue, Component } from "vue-property-decorator";
       isLogin: this.$route.path.includes("login"),
     };
   },
-  // validations: {
-  //   email: { required, email },
-  //   password: { required, minLength: minLength(6) },
-  // },
+  setup: () => ({ v$: useVuelidate() }),
+  validations() {
+    return {
+      email: { required, email },
+      password: { required, minLength: minLength(6) },
+    };
+  },
   methods: {
     async submit() {
-      console.log(this.$v);
-      const { isLogin } = this.$data;
-      if (isLogin) {
+      if (this.v$.$error) {
+        // need render errors
+        return;
+      }
+
+      if (this.$data.isLogin) {
         try {
           await this.$store.dispatch("getUser", true);
+
           await this.$router.push("/");
         } catch (err) {
           Vue.notify({
@@ -91,23 +75,8 @@ import { Vue, Component } from "vue-property-decorator";
       }
     },
   },
-  created() {
-    console.log("|", this.$store.getters.user);
-  },
 })
-export default class AuthView extends Vue {
-  // @VModel() readonly email!: string;
-  // @VModel() readonly password!: string;
-  // validations: {
-  //   email: { required, email },
-  //   password: { required, minLength: minLength(6) },
-  // }
-  // validate() {
-  //   this.v$.$validate({ silent: true }).then((result) => {
-  //     console.log("Result is", result);
-  //   });
-  // }
-}
+export default class AuthView extends Vue {}
 </script>
 
 <style>

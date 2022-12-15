@@ -17,7 +17,7 @@ export default class Container extends Vue {
     if (this.article) {
       return this.article;
     }
-    console.log(2);
+
     if (this.$store.getters.articles.length) {
       return this.$store.getters.articles.find(
         (article: Article) => article.id === Number(this.$route.params.id)

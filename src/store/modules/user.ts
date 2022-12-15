@@ -26,6 +26,7 @@ export default {
         commit("updateUser", user);
       } catch (err) {
         commit("updateUser", undefined);
+        throw new Error();
       }
     },
     async registerUser(
