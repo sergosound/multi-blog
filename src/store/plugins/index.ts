@@ -1,7 +1,7 @@
 import VuexPersistence from "vuex-persist";
-import { RootState } from "@/store/modules";
+import { Store } from "@/types";
 
-export const vuexLocal = new VuexPersistence<RootState>({
+export const vuexLocal = new VuexPersistence<Store.StoreState["modules"]>({
   storage: window.localStorage,
   reducer: (state) => ({ articles: state.articles, user: state.user }),
 });

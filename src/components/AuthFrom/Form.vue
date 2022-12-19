@@ -17,7 +17,7 @@
         class="form-control"
         id="floatingInput"
         placeholder="name@example.com"
-        v-model="email"
+        v-model="syncEmail"
       />
       <label for="floatingInput">Email address</label>
     </div>
@@ -27,7 +27,7 @@
         class="form-control"
         id="floatingPassword"
         placeholder="Password"
-        v-model="password"
+        v-model="syncPassword"
       />
       <label for="floatingPassword">Password</label>
     </div>
@@ -44,12 +44,12 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop, PropSync } from "vue-property-decorator";
 
 @Component
 export default class Form extends Vue {
-  @Prop() email!: string;
-  @Prop() password!: string;
+  @PropSync("email") syncEmail!: string;
+  @PropSync("password") syncPassword!: string;
   @Prop() isLogin!: boolean;
   @Prop() submit: any;
 }

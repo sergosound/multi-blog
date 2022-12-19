@@ -6,7 +6,6 @@
     <nav class="links">
       <ul>
         <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/create-article">Create article</router-link></li>
         <li><router-link to="/profile">Profile</router-link></li>
       </ul>
     </nav>

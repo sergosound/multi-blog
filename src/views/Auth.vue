@@ -37,9 +37,14 @@ import { AuthForm } from "@/components/AuthFrom";
   },
   setup: () => ({ v$: useVuelidate() }),
   validations() {
+    const mustBeCool = (value: string): boolean => {
+      const bool = value.includes("cool");
+      console.log("| bool |", bool, value);
+      return bool;
+    };
     return {
       email: { required, email },
-      password: { required, minLength: minLength(6) },
+      password: { required, minLength: minLength(6), mustBeCool },
     };
   },
   methods: {
